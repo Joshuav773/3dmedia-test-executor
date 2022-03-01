@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "jvNM1gPhg1db6r7HTW5buP98kpLZgWJ/1Vt2QQPdoXnKd+HDIqxVf2aaV3pEQegmdhlC/sPZptIzoSXMQA4Dvw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Joshua Vargas\\source\\repos\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Joshua Vargas\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Joshua Vargas\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Joshua Vargas\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Joshua Vargas\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Joshua Vargas\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Joshua Vargas\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
