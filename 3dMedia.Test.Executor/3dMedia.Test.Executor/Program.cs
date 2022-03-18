@@ -1,11 +1,16 @@
+using _3dMedia.Test.Executor.Config;
+using _3dMedia.Test.Executor.Data.Context;
 using _3dMedia.Test.Executor.Service;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var _config = new ConfigurationBuilder()
+    .AddJsonFile(@"appsettings.json")
+    .Build();
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,7 +24,11 @@ builder.Services.AddCors(options =>
       .AllowCredentials());
 });
 
+builder.Services.Configure<AppSettings>(_config.GetSection("AppSetting"));
+
 builder.Services.AddTransient<IJenkinsService, JenkinsService>();
+
+builder.Services.AddDbContext<BeamDbContext>(options => options.UseNpgsql(_config.GetConnectionString("BeamDb")));
 
 var app = builder.Build();
 

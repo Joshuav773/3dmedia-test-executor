@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joshua Vargas\\source\\repos\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj": {}
+    "C:\\Users\\Joshua Vargas\\OneDrive\\Desktop\\3dMedia-test-Exec\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joshua Vargas\\source\\repos\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj": {
+    "C:\\Users\\Joshua Vargas\\OneDrive\\Desktop\\3dMedia-test-Exec\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joshua Vargas\\source\\repos\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj",
+        "projectUniqueName": "C:\\Users\\Joshua Vargas\\OneDrive\\Desktop\\3dMedia-test-Exec\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj",
         "projectName": "3dMedia.Test.Executor",
-        "projectPath": "C:\\Users\\Joshua Vargas\\source\\repos\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj",
+        "projectPath": "C:\\Users\\Joshua Vargas\\OneDrive\\Desktop\\3dMedia-test-Exec\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj",
         "packagesPath": "C:\\Users\\Joshua Vargas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joshua Vargas\\source\\repos\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\obj\\",
+        "outputPath": "C:\\Users\\Joshua Vargas\\OneDrive\\Desktop\\3dMedia-test-Exec\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Joshua Vargas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"

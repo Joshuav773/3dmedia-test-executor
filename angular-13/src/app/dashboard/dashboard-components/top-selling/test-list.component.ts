@@ -8,7 +8,8 @@ import { Test } from './Test';
 })
 export class TestsListComponent implements OnInit {
 
-  tests: Test[] = [];
+  tests: Test[] = []; 
+  selectedTests: any[] = [];
 
   constructor(private dashService: DashboardService) { 
   }
@@ -25,6 +26,27 @@ export class TestsListComponent implements OnInit {
     this.dashService.getListOfTests().subscribe({
       next: (response) => this.tests = response,
     });
+  }
+
+  onRowSelected($event: any): void {
+    if($event.target.checked){
+      const selected = this.tests.find(test => test.Name === $event.target.value);
+      this.selectedTests.push(selected)
+      return;
+    }
+
+    if(!$event.target.checked){
+      const toRemove = this.tests.findIndex(test => test.Name === $event.target.value);
+      this.selectedTests.splice(toRemove, 1);
+    }
+  }
+
+  onRun($event: any): void {
+    //this method is to run the job
+  }
+
+  onStop($event: any): void {
+    //this method if to stop the job
   }
 
   getStatusClass(testResult: number): string {
