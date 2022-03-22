@@ -1,6 +1,7 @@
 export interface Test {
-    Name: string;
-    TestResult: number;
-    Description: string;
+    name: string;
+    testResult: number;
+    description: string;
+    selected: boolean;
     // timeElapsed: Date;
 }

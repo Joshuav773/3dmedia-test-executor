@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "R0OleFKyvR0k6iygs8mRsYLI3BMQqNvOvXm7LsNgKIx4njQojGw026aPWW1Jnj17CNc8yJ8oHBYDECGY6OgsHA==",
+  "dgSpecHash": "iJZxpTB5Ys6farysWHerfUSgpWLeATO0Yg784fogipuoBIyIT6cVRrsMKEWXwFp9HikBzmmDIn1EYvWjd+wzbA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Joshua Vargas\\OneDrive\\Desktop\\3dMedia-test-Exec\\3dMedia.Test.Executor\\3dMedia.Test.Executor\\3dMedia.Test.Executor.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Joshua Vargas\\.nuget\\packages\\jenkinsnet\\1.0.4\\jenkinsnet.1.0.4.nupkg.sha512",
     "C:\\Users\\Joshua Vargas\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
     "C:\\Users\\Joshua Vargas\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.3\\microsoft.entityframeworkcore.abstractions.6.0.3.nupkg.sha512",
     "C:\\Users\\Joshua Vargas\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.3\\microsoft.entityframeworkcore.analyzers.6.0.3.nupkg.sha512",

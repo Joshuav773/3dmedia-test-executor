@@ -10,6 +10,7 @@ export class TestsListComponent implements OnInit {
 
   tests: Test[] = []; 
   selectedTests: any[] = [];
+  isAllSelected: boolean = false;
 
   constructor(private dashService: DashboardService) { 
   }
@@ -28,25 +29,41 @@ export class TestsListComponent implements OnInit {
     });
   }
 
+  onSelectAll($event: any){
+    if($event.target.checked){
+      this.tests.forEach(test => test.selected = true)
+      this.isAllSelected = true;
+      return;
+    }
+
+    this.tests.forEach(test => test.selected = false)
+    this.isAllSelected = false;
+  }
+
   onRowSelected($event: any): void {
     if($event.target.checked){
-      const selected = this.tests.find(test => test.Name === $event.target.value);
-      this.selectedTests.push(selected)
+      let selected = this.tests.find(test => test.name === $event.target.value);
+      selected!.selected = true;
       return;
     }
 
     if(!$event.target.checked){
-      const toRemove = this.tests.findIndex(test => test.Name === $event.target.value);
-      this.selectedTests.splice(toRemove, 1);
+      let toRemove = this.tests.find(test => test.name === $event.target.value);
+      toRemove!.selected = false;
+      return;
     }
   }
 
   onRun($event: any): void {
-    //this method is to run the job
+    console.log(this.tests.filter(test => test.selected).map(test => test.name))
   }
 
   onStop($event: any): void {
     //this method if to stop the job
+  }
+
+  anySelected = (): boolean => {
+    return this.tests.filter(test => test.selected).length > 0
   }
 
   getStatusClass(testResult: number): string {

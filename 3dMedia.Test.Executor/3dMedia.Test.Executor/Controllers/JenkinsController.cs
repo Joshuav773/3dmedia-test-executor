@@ -20,7 +20,7 @@ namespace _3dMedia.Test.Executor.Controllers
         [HttpGet("GetListOfTestsAsync")]
         public async Task<IActionResult> GetListOfTestsAsync()
         {
-            var tests = await _jenkinsService.GetListOfTestsAsync();
+            var tests = await _jenkinsService.GetListOfTestsAsync("Beam Api");
 
             return Ok(tests);
         }

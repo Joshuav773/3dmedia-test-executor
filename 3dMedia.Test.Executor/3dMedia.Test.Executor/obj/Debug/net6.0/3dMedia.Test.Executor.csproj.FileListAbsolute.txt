@@ -58,3 +58,4 @@ C:\Users\Joshua Vargas\OneDrive\Desktop\3dMedia-test-Exec\3dMedia.Test.Executor\
 C:\Users\Joshua Vargas\OneDrive\Desktop\3dMedia-test-Exec\3dMedia.Test.Executor\3dMedia.Test.Executor\obj\Debug\net6.0\scopedcss\bundle\3dMedia.Test.Executor.styles.css
 C:\Users\Joshua Vargas\OneDrive\Desktop\3dMedia-test-Exec\3dMedia.Test.Executor\3dMedia.Test.Executor\obj\Debug\net6.0\3dMedia.Test.Executor.csproj.CopyComplete
 C:\Users\Joshua Vargas\OneDrive\Desktop\3dMedia-test-Exec\3dMedia.Test.Executor\3dMedia.Test.Executor\obj\Debug\net6.0\3dMedia.Test.Executor.genruntimeconfig.cache
+C:\Users\Joshua Vargas\OneDrive\Desktop\3dMedia-test-Exec\3dMedia.Test.Executor\3dMedia.Test.Executor\bin\Debug\net6.0\Jenkins.Net.dll

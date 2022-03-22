@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "jenkinsnet/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Jenkins.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Jenkins.Net.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore/6.0.3": {
         "type": "package",
         "dependencies": {
@@ -318,6 +327,23 @@
     }
   },
   "libraries": {
+    "jenkinsnet/1.0.4": {
+      "sha512": "AiBItgetxrf0clZZW0P5BSa9GKoN5lPfDuyuhCAlOtk7h790Du4m0Btg6hmyd8Ufn4+gXXWCF77l6k+iQT/Oiw==",
+      "type": "package",
+      "path": "jenkinsnet/1.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jenkinsnet.1.0.4.nupkg.sha512",
+        "jenkinsnet.nuspec",
+        "lib/net40/Jenkins.Net.dll",
+        "lib/net40/Jenkins.Net.xml",
+        "lib/net45/Jenkins.Net.dll",
+        "lib/net45/Jenkins.Net.xml",
+        "lib/netstandard2.0/Jenkins.Net.dll",
+        "lib/netstandard2.0/Jenkins.Net.xml"
+      ]
+    },
     "Microsoft.EntityFrameworkCore/6.0.3": {
       "sha512": "f7ZlNOI1wPg/r0zRgvmcLAM3kwuCVGe5cZc8rYoKPDGZs5dgRFe5a43H9FnCXsyFAF6FILB08Nr9RkuNMwd3TQ==",
       "type": "package",
@@ -841,7 +867,8 @@
       "Microsoft.EntityFrameworkCore >= 6.0.3",
       "Microsoft.EntityFrameworkCore.Abstractions >= 6.0.3",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 6.0.3",
-      "Swashbuckle.AspNetCore >= 6.2.3"
+      "Swashbuckle.AspNetCore >= 6.2.3",
+      "jenkinsnet >= 1.0.4"
     ]
   },
   "packageFolders": {
@@ -898,6 +925,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.2.3, )"
+          },
+          "jenkinsnet": {
+            "target": "Package",
+            "version": "[1.0.4, )"
           }
         },
         "imports": [

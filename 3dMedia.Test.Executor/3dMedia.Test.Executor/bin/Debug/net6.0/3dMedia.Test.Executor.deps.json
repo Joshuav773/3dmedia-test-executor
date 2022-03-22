@@ -11,10 +11,19 @@
           "Microsoft.EntityFrameworkCore": "6.0.3",
           "Microsoft.EntityFrameworkCore.Abstractions": "6.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.3",
-          "Swashbuckle.AspNetCore": "6.2.3"
+          "Swashbuckle.AspNetCore": "6.2.3",
+          "jenkinsnet": "1.0.4"
         },
         "runtime": {
           "3dMedia.Test.Executor.dll": {}
+        }
+      },
+      "jenkinsnet/1.0.4": {
+        "runtime": {
+          "lib/netstandard2.0/Jenkins.Net.dll": {
+            "assemblyVersion": "1.0.4.0",
+            "fileVersion": "1.0.4.0"
+          }
         }
       },
       "Microsoft.EntityFrameworkCore/6.0.3": {
@@ -198,6 +207,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "jenkinsnet/1.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AiBItgetxrf0clZZW0P5BSa9GKoN5lPfDuyuhCAlOtk7h790Du4m0Btg6hmyd8Ufn4+gXXWCF77l6k+iQT/Oiw==",
+      "path": "jenkinsnet/1.0.4",
+      "hashPath": "jenkinsnet.1.0.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/6.0.3": {
       "type": "package",

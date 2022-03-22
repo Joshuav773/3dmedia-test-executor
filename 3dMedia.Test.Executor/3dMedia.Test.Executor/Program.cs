@@ -24,7 +24,8 @@ builder.Services.AddCors(options =>
       .AllowCredentials());
 });
 
-builder.Services.Configure<AppSettings>(_config.GetSection("AppSetting"));
+builder.Services.Configure<AppSettings>(_config.GetSection(nameof(AppSettings)));
+builder.Services.Configure<JenkinsSettings>(_config.GetSection(nameof(JenkinsSettings)));
 
 builder.Services.AddTransient<IJenkinsService, JenkinsService>();
 
