@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
+import { ReportExecutorComponent } from './report-executor/report-executor.component';
 
 export const Approutes: Routes = [
   {
@@ -12,11 +13,15 @@ export const Approutes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      }
+      },
+      {
+        path: 'reports',
+        component: ReportExecutorComponent,
+      },
     ]
   },
   {
     path: '**',
-    redirectTo: '/starter'
+    redirectTo: '/dashboard'
   }
 ];

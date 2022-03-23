@@ -10,7 +10,7 @@ export class TestsListComponent implements OnInit {
 
   tests: Test[] = []; 
   selectedTests: any[] = [];
-  isAllSelected: boolean = false;
+  isAllSelected: boolean;
 
   constructor(private dashService: DashboardService) { 
   }
@@ -55,7 +55,9 @@ export class TestsListComponent implements OnInit {
   }
 
   onRun($event: any): void {
-    console.log(this.tests.filter(test => test.selected).map(test => test.name))
+    const selectedTests = this.tests.filter(test => test.selected).map(test => test.name);
+    console.log(selectedTests);
+    //send the selectecTest Back to Api for build processing
   }
 
   onStop($event: any): void {

@@ -4,10 +4,6 @@
         <h4 class="card-title">List of Tests</h4>
         <h5 class="card-subtitle">Select tests to execute</h5>
         <!-- title -->
-        <div class="btn-group" role="group" style="float: right;">
-            <button mat button type="button" class="btn btn-success" [disabled]="anySelected" (click)="onRun($event)">Run</button>
-            <button mat button type="button" class="btn btn-danger" [disabled]="anySelected" (click)="onStop($event)">Stop</button>
-        </div>
         <div class="table-responsive">
             <table class="table table-hover align-middle">
                 <thead>
@@ -42,6 +38,10 @@
                     </tr>              
                 </tbody>
             </table>
+        </div>
+        <div class="btn-group" role="group" style="float: right;">
+            <button mat button type="button" class="btn btn-success" (click)="onRun($event)">Run</button>
+            <button mat button type="button" class="btn btn-danger" (click)="onStop($event)">Stop</button>
         </div>
     </div>
     

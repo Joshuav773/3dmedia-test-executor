@@ -4,20 +4,20 @@ export const ROUTES: RouteInfo[] = [
  
   {
     path: '/dashboard',
-    title: 'Dashboard',
+    title: 'Test Executor',
     icon: 'bi bi-speedometer2',
     class: '',
     extralink: false,
     submenu: []
   },
-  // {
-  //   path: '/component/alert',
-  //   title: 'Alert',
-  //   icon: 'bi bi-bell',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
+  {
+    path: '/reports',
+    title: 'Report Executor',
+    icon: 'bi bi-bell',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
   // {
   //   path: '/component/badges',
   //   title: 'Badges',
