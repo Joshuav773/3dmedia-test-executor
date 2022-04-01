@@ -17,12 +17,20 @@ namespace _3dMedia.Test.Executor.Controllers
             _jenkinsService = jenkinsService;
         }
 
-        [HttpGet("GetListOfTestsAsync")]
-        public async Task<IActionResult> GetListOfTestsAsync()
+        [HttpGet("GetListOfTests")]
+        public async Task<IActionResult> GetListOfTests()
         {
-            var tests = await _jenkinsService.GetListOfTestsAsync("Beam Api");
+            var response = await _jenkinsService.GetListOfTestsAsync("Beam Api");
 
-            return Ok(tests);
+            return response;
+        }
+
+        [HttpPost("ExecuteTests")]
+        public async Task<IActionResult> ExecuteTests([FromBody]IEnumerable<string> selectTests)
+        {
+            var buildResponse = await _jenkinsService.RunJenkinsBuild_Postman("Run-PostmanTest", selectTests);
+
+            return buildResponse;
         }
     }
 }

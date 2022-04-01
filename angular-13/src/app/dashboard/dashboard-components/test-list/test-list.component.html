@@ -40,7 +40,7 @@
             </table>
         </div>
         <div class="btn-group" role="group" style="float: right;">
-            <button mat button type="button" class="btn btn-success" (click)="onRun($event)">Run</button>
+            <button mat button type="button" class="btn btn-success" [disabled]="disableRun()" (click)="onRun($event)">Run</button>
             <button mat button type="button" class="btn btn-danger" (click)="onStop($event)">Stop</button>
         </div>
     </div>

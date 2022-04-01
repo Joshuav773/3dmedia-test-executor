@@ -1,15 +1,18 @@
 ﻿using _3dMedia.Test.Executor.Config;
 using _3dMedia.Test.Executor.Data.Context;
-using _3dMedia.Test.Executor.Models;
+using _3dMedia.Test.Executor.Extensions;
+using _3dMedia.Test.Executor.Models.Enums;
 using JenkinsNET;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System.Linq;
 
 namespace _3dMedia.Test.Executor.Service
 {
     public interface IJenkinsService
     {
-        Task<IEnumerable<Models.Test>> GetListOfTestsAsync(string projectName);
+        Task<IActionResult> GetListOfTestsAsync(string projectName);
+        Task<IActionResult> RunJenkinsBuild_Postman(string buildName, IEnumerable<string> selectedTest);
     }
 
     public class JenkinsService : IJenkinsService
@@ -27,47 +30,87 @@ namespace _3dMedia.Test.Executor.Service
             _jenkinsClient = new JenkinsClient
             {
                 BaseUrl = _jenkinsSettings.JenkinsUrl,
-                UserName = _jenkinsSettings.JenkinsApiKey,
-                ApiToken = _jenkinsSettings.JenkinsUsername,
+                UserName = _jenkinsSettings.JenkinsUsername,
+                ApiToken = _jenkinsSettings.JenkinsApiKey,
             };
 
             //var response = await Task.Run(() => client.Jobs.Build("Run-PostmanTest"));
         }
 
-        private IList<Models.Test> TestData = new List<Models.Test>
+        private IList<Data.Models.Test> TestData = new List<Data.Models.Test>
         {
-            new Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
-            new Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
-            new Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
-            new Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
-            new Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
-            new Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
-            new Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" }
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" }
         };
 
-        public async Task<IEnumerable<Models.Test>> GetListOfTestsAsync(string projectName)
+        public async Task<IActionResult> GetListOfTestsAsync(string projectName)
         {
-            if (_config.DbActive)
+            try
             {
-                return await Task.FromResult(
-                    _context.Tests
-                            .Where(test => test.ProjectName.ToLower().Equals(projectName.ToLower()))
-                            .OrderByDescending(test => test.Id)
-                            .AsEnumerable()
-                    );
+
+                if (_config.DbActive)
+                {
+                    var data = await _context.Tests
+                                .Where(test => test.ProjectName.ToLower().Equals(projectName.ToLower()))
+                                .OrderBy(test => test.Id)
+                                .ToListAsync();
+
+                    return data.GetSuccessResponse();
+                        
+                }
+
+                return TestData.AsEnumerable().GetSuccessResponse();
             }
+            catch (Exception ex)
+            {
 
-            return await Task.FromResult(TestData.AsEnumerable());
-
+                return ex.GetServerErrorResponse();
+            }
         }
 
-        public async Task<JenkinsBuildResult> RunJenkinsBuild_Postman(string buildName, IEnumerable<string> selectedTest)
+        public async Task<IActionResult> RunJenkinsBuild_Postman(string buildName, IEnumerable<string> selectedTest)
         {
-            var @params = new Dictionary<string, string>();
+            try
+            {
+                if (!_config.DbActive)
+                {
+                    return "https://Google.com".GetSuccessResponse();
+                }
 
-            foreach(var test in selectedTest) @params.Add("selectedTest", test);
+                if (string.IsNullOrEmpty(buildName))
+                {
+                    return "Build Name is missing cannot continue".GetErrorResponse();
+                }
 
-            return await _jenkinsClient.Jobs.BuildWithParametersAsync(buildName, @params);
+                var @params = new Dictionary<string, string>
+                {
+                    { "selectedTest", string.Join(',', selectedTest) }
+                };
+
+                var build = await _jenkinsClient.Jobs.BuildWithParametersAsync(buildName, @params);
+
+                if (string.IsNullOrEmpty(build.QueueItemUrl))
+                {
+                    return "There was an error, build was not queued".GetErrorResponse();
+                }
+
+                return build.QueueItemUrl.GetSuccessResponse();
+            }
+            catch (Exception ex)
+            {
+                return ex.GetServerErrorResponse();
+            }
+        }
+
+        private void UpdateTestResults(IEnumerable<Data.Models.Test> tests)
+        {
+            //do something with the test before this.
+            Task.Run(() => _context.Tests.UpdateRange(tests)).GetAwaiter();
         }
     }
 }

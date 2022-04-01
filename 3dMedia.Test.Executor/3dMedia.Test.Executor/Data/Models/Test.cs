@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using _3dMedia.Test.Executor.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
-namespace _3dMedia.Test.Executor.Models
+namespace _3dMedia.Test.Executor.Data.Models
 {
     public class Test
     {

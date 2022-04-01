@@ -1,4 +1,4 @@
-﻿namespace _3dMedia.Test.Executor.Models
+﻿namespace _3dMedia.Test.Executor.Models.Enums
 {
     public enum TestResult
     {

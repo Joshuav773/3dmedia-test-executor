@@ -26,6 +26,8 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { DashboardService } from './dashboard/dashboard.service';
 import { ReportExecutorComponent } from './report-executor/report-executor.component';
+import { ToastsContainerComponent } from './shared/toasts/toasts-container.component';
+import { ToastService } from './shared/toasts/toasts.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -42,6 +44,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavigationComponent,
     SidebarComponent,
     ReportExecutorComponent,
+    ToastsContainerComponent,
   ],
   imports: [
     CommonModule,
@@ -63,7 +66,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     }, 
-    DashboardService
+    DashboardService,
+    ToastService
   ],
   bootstrap: [AppComponent]
 })

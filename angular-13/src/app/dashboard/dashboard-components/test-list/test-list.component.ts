@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiResponse } from '../../../shared/api-response';
+import { ToastService } from '../../../shared/toasts/toasts.service';
 import { DashboardService } from '../../dashboard.service';
 import { Test } from './Test';
 
@@ -11,8 +13,9 @@ export class TestsListComponent implements OnInit {
   tests: Test[] = []; 
   selectedTests: any[] = [];
   isAllSelected: boolean;
+  isSendingRequest: boolean;
 
-  constructor(private dashService: DashboardService) { 
+  constructor(private dashService: DashboardService, private toast: ToastService) { 
   }
 
   ngOnInit(): void {
@@ -25,7 +28,13 @@ export class TestsListComponent implements OnInit {
 
   getListOfTests(): void {
     this.dashService.getListOfTests().subscribe({
-      next: (response) => this.tests = response,
+      next: (res: ApiResponse<Test[]>) => {
+        if(res.error) {
+          this.toast.showErrorMessage(res.errorMessage)
+        }
+
+        this.tests = res.data
+      },
     });
   }
 
@@ -56,16 +65,28 @@ export class TestsListComponent implements OnInit {
 
   onRun($event: any): void {
     const selectedTests = this.tests.filter(test => test.selected).map(test => test.name);
-    console.log(selectedTests);
-    //send the selectecTest Back to Api for build processing
+
+    this.dashService.ExecuteTests(selectedTests).subscribe({
+      next: (res: ApiResponse<string>) => {
+        if(res.error){
+          this.toast.showErrorMessage(res.errorMessage)
+        }
+
+        this.toast.showSuccessMsg(`Success! \nthe build has been queued, go to this URL to see the build running: \n${res.data}`);
+      }
+    })
   }
 
   onStop($event: any): void {
     //this method if to stop the job
   }
 
-  anySelected = (): boolean => {
-    return this.tests.filter(test => test.selected).length > 0
+  disableRun(): boolean {
+    if (this.tests.filter(test => test.selected).length > 0){
+      return false;
+    }
+    
+    return true;
   }
 
   getStatusClass(testResult: number): string {

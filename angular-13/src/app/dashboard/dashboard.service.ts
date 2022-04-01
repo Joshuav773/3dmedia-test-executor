@@ -12,10 +12,14 @@ export class DashboardService extends BaseService {
 
     constructor(httpClient: HttpClient){
         super(httpClient);
-        this.requestUrl = 'https://localhost:7289/api/Jenkins/GetListOfTestsAsync'
+        this.requestUrl = 'https://localhost:7289/api/Jenkins'
     }
 
     getListOfTests(): Observable<any> {
-        return super.get(this.requestUrl);
+        return super.get(`${this.requestUrl}/GetListOfTests`);
+    }
+
+    ExecuteTests(req: any): Observable<any> {
+        return this.post(`${this.requestUrl}/ExecuteTests`, req);
     }
 }

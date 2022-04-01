@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import { NgApexchartsModule } from "ng-apexcharts";
 import { DashboardComponent } from "./dashboard.component";
-import { TestsListComponent } from "./dashboard-components/top-selling/test-list.component";
+import { TestsListComponent } from "./dashboard-components/test-list/test-list.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     NgApexchartsModule,
-    NgbModule
+    NgbModule,
   ],
   declarations: [
     DashboardComponent,
