@@ -22,7 +22,7 @@ export class TestsListComponent implements OnInit {
     this.load();
   }
 
-  load(){
+  load(): void {
     this.getListOfTests();
   }
 
@@ -38,7 +38,7 @@ export class TestsListComponent implements OnInit {
     });
   }
 
-  onSelectAll($event: any){
+  onSelectAll($event: any): void {
     if($event.target.checked){
       this.tests.forEach(test => test.selected = true)
       this.isAllSelected = true;
@@ -65,6 +65,7 @@ export class TestsListComponent implements OnInit {
 
   onRun($event: any): void {
     const selectedTests = this.tests.filter(test => test.selected).map(test => test.name);
+    console.log(selectedTests);
 
     this.dashService.ExecuteTests(selectedTests).subscribe({
       next: (res: ApiResponse<string>) => {
@@ -78,7 +79,7 @@ export class TestsListComponent implements OnInit {
   }
 
   onStop($event: any): void {
-    //this method if to stop the job
+    this.toast.showErrorMessage("this is an error alert!")
   }
 
   disableRun(): boolean {

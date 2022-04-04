@@ -35,10 +35,28 @@ namespace _3dMedia.Test.Executor.Service
             };
 
             //var response = await Task.Run(() => client.Jobs.Build("Run-PostmanTest"));
+            //3D media Jenkins instance api key --11c7c2cf6e8611dd07dd2bbdc8cb08abbd--
         }
 
         private IList<Data.Models.Test> TestData = new List<Data.Models.Test>
         {
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
+            new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
             new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
             new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
             new Data.Models.Test() { Name = $"Test-{new Random().Next(0, 100)}", TestResult = (TestResult)new Random().Next(1, 4), Description = "This is a Test description", ProjectName = "Beam Api" },
@@ -60,8 +78,7 @@ namespace _3dMedia.Test.Executor.Service
                                 .OrderBy(test => test.Id)
                                 .ToListAsync();
 
-                    return data.GetSuccessResponse();
-                        
+                    return data.GetSuccessResponse();    
                 }
 
                 return TestData.AsEnumerable().GetSuccessResponse();
